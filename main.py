@@ -1,3 +1,6 @@
+from time import sleep
+
+
 def input_error(func):
     def wrapper(user_data):
         try:
@@ -76,15 +79,16 @@ def change_handler(user_data: list) -> str:
 def show_phone_handler(user_data: list) -> str:
     "Функція виводить на екран номер телефону існуючого контакту"
 
-    phone = dictionary.get((user_data[0]), "is missing. Contact is not found")
-    return f"{user_data[0]}'s phone number {phone} "
+    return "%s" % dictionary.get((user_data[0]), "Contact is not found")
 
 
 @input_error
 def bye_handler(*args, **kwargs):
     "Закінчення діалогу"
 
-    return exit("Goodbye!")
+    print("Goodbye!")
+    sleep(3)
+    return exit()
 
 
 @input_error
